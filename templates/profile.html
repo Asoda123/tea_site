@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="/favicon.png">
+    <title></title>
+</head>
+
+{% include 'navigation.html' %}
+
+<body>
+<H1>{{username}}</H1>
+<H1>Role : {% if role == 1%} admin {%else%}user {%endif%}</H1>
+<a href="/user_orders">Your Orders</a>
+
+<a href="/logout">Log Out</a>
+</body>
+
+<script>
+        document.title = '{{username}}`s Profile'
+</script>
+</html>

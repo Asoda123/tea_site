@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Teas</title>
+</head>
+
+{% include 'navigation.html' %}
+
+<body>
+
+
+{% if role == 1 %}
+<a href="/new_item">Add new item</a>
+{% endif %}
+
+{% for item in data %}
+<h2>{{item.name}}</h2>
+<img src="/static/photos/{{item.img}}">
+<h3>{{item.price}} {{item.currency}}</h3>
+<h3>{{item.description}}</h3>
+<input min="1" type="number" id="qti_{{item.id}}" placeholder="amount"><button type="button" onclick="add_to_cart({{item.id}})">Add to cart </button>
+
+{% if role == 1 %}
+<button type="button" onclick="delete_item({{item.id}})">Remove item </button>
+{% endif %}
+
+{% endfor %}
+
+</body>
+
+<script>
+    function add_to_cart(product_id){
+        const quantity = document.getElementById(`qti_${product_id}`).value;
+
+        fetch(`/shop`,{method:'POST',headers:{'Content-Type': 'application/json'},body:JSON.stringify({'id':product_id,'quantity':quantity})})
+        .then(response => response.json())
+        .then(data => {alert('Item added')})
+
+    }
+
+    function delete_item(item_id){
+        
+        fetch(`/remove`, {method:'POST',headers:{'Content-Type': 'application/json'}, body:JSON.stringify({'id':item_id})})
+        .then(response => response.json())
+        .then(data => {alert("Item removed")})
+
+    }
+
+</script>
+
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Aged Pu-erh</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lavishly+Yours&display=swap" rel="stylesheet">
+
+
+
+</head>
+
+{% include 'navigation.html' %}
+
+<body>
+
+<script>
+    const profile_btn = document.getElementById('prof')
+
+    profile_btn.addEventListener('onclick', function(event) {
+        event.preventDefault()
+        console.log(document.cookie)
+
+    })
+
+</script>
+
+
+</body>
+<style>
+    header {
+        text-align: center;
+    }
+    a {
+        text-decoration: none;
+        color: inherit;
+        padding: 10px;
+        margin-left: 10px;
+        place-items: center;
+        border-width: 10px;
+        border-color: dimgray;
+        border : 2px solid;
+    }
+    a:hover{
+        
+        background-color: blanchedalmond;
+    }
+    nav {
+        justify-content: center;
+        display: flex;
+    }
+
+    h1 {
+        font-family: galada
+    }
+
+    .lavishly-yours-regular {
+        font-size: 56px;
+        font-family: "Lavishly Yours", cursive;
+        font-weight: 400;
+        font-style: normal;
+    }
+
+</style>
+</html>

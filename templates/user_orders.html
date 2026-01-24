@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Orders</title>
+  <link rel="icon" type="image/png" href="/favicon.png">
+</head>
+
+{% include 'navigation.html' %}
+
+<body>
+{% for order in orders %}
+<h2>{{order.id}}</h2><h2>{{order.date}}</h2> <h2>{{order.total_price}}</h2>
+<button type="button" onclick="detail({{order.id}})">Show Details</button>
+{% endfor %}
+</body>
+
+<script>
+  function detail(id){
+
+    fetch(`/user_orders`, {method : 'POST', headers:{'Content-Type': 'application/json'}, body:JSON.stringify({'id':id})})
+    .then(response => response.json())
+    .then(data => {alert(data.products)})
+
+
+
+  }
+
+</script>
+</html>

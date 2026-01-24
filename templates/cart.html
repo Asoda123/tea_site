@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cart</title>
+</head>
+
+{% include 'navigation.html' %}
+
+<body>
+<h1>{{username}}`s cart</h1>
+
+{% for i in cart %}
+<h2>{{i[1]}}</h2>
+<img src="/static/photos/{{i[6]}}">
+<h2>{{i[2]}}</h2><h2>{{i[3]}}</h2><h2>{{i[4]}} items</h2>
+<h2>{{i[5]}}</h2>
+
+{% endfor %}
+
+<a href="/order">Order</a>
+</body>
+</html>

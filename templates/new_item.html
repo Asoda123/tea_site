@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New Item</title>
+</head>
+
+{% include 'navigation.html' %}
+
+<body>
+<form id="forma" enctype="multipart/form-data">
+    <input type="text" name="name" placeholder="Name" required>
+    <input type="number" name="price" placeholder="Price" required>
+    <select name="currency" required>
+        <option value="UAH">₴</option>
+        <option value="EUR">€</option>
+        <option value="USD">$</option>
+    </select>
+    <input type="text" name="description" placeholder="Description" required>
+    <input type="file" name="img" placeholder="Image" required>
+    <input type="submit" value="Add new item">
+</form>
+
+<div id="div"></div>
+
+</body>
+
+<script>
+    const forma = document.getElementById('forma')
+    const div = document.getElementById('div')
+
+    forma.addEventListener('submit', function(event){
+        event.preventDefault();
+
+        const form = new FormData(forma)
+
+        fetch(`/new_item`,{method:'POST',body:form})
+        .then(response => response.json())
+        .then(data =>  {
+            div.innerHTML += `<h3>${data.name} was added to database.</h3>`
+        })
+
+
+    })
+
+
+</script>
+
+
+
+</html>
